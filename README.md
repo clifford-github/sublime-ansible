@@ -1,3 +1,4 @@
+
 sublime-ansible
 ===============
 
@@ -21,21 +22,18 @@ The "Packages" directory is located at:
     `%APPDATA%/Sublime Text 2/Packages/`
 
 
-
 =======
-Tab Completion
-==============
-
+Tab completion for Ansible files
+=====================================
 Work In Progress.  Suggestions, pull requests welcome.
 
-We extract the snippet information from ansible on github
-https://github.com/ansible/ansible/tree/devel/library
-
-#### Recommended
+## Recommended
 
 First, go to the awesome sublime tutorials and learn about snippets
 https://tutsplus.com/lesson/key-bindings/
 
+We extract the snippet information from ansible on github
+https://github.com/ansible/ansible/tree/devel/library
 
 ###Installation: 
 
@@ -108,12 +106,12 @@ trigger to "file" from "fil".
 <snippet>
     <content><![CDATA[ - name: ${1:.}
    file: src=${2:nodefault}
-         recurse=${6:no}
-         state=${7:file}
-         mode=${9:nodefault}
-         path=${10:nodefault}
-         owner=${11:nodefault}
-         group=${12:nodefault}
+         recurse=${3:no}
+         state=${4:file}
+         mode=${5:nodefault}
+         path=${6:nodefault}
+         owner=${7:nodefault}
+         group=${8:nodefault}
          ]]></content>
     <tabTrigger>file</tabTrigger>
     <scope>source.yaml</scope>
