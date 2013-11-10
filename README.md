@@ -1,22 +1,41 @@
 sublime-ansible
 ===============
 
-## Recommended
 
-First, go to the awesome sublime tutorials and learn about snippets
-https://tutsplus.com/lesson/key-bindings/
+=======
+Syntax highlighting for Ansible files
+=====================================
+
+## Installation
+Clone the repository in your Sublime Text "Packages" directory:
+
+    git clone https://github.com/clifford-github/sublime-ansible.git Ansible
+
+The "Packages" directory is located at:
+
+* OS X:
+    `~/Library/Application Support/Sublime Text 2/Packages/`
+* Linux:
+    `~/.Sublime Text 2/Packages/`
+* Windows:
+    `%APPDATA%/Sublime Text 2/Packages/`
 
 
-## Language Definition
 
-...
-
-## Tab Completion
+=======
+Tab Completion
+==============
 
 Work In Progress.  Suggestions, pull requests welcome.
 
 We extract the snippet information from ansible on github
 https://github.com/ansible/ansible/tree/devel/library
+
+#### Recommended
+
+First, go to the awesome sublime tutorials and learn about snippets
+https://tutsplus.com/lesson/key-bindings/
+
 
 ###Installation: 
 
@@ -120,4 +139,5 @@ to go through the sublime-text tutorials on snippets right now to debug.
 There are now a few modules with identical first three letters like "file" and "filesystem".  For now, manually edit the tabTrigger field so that they are different or delete the obscuring module option you do not use.
 
 Sublime's auto tab completion for words you have typed before sometimes obscures a tab trigger.  Either tab to the correct choice or modify tab_completion.py emit_snippet method to make a more unique trigger like fil_ for file. 
+
 
