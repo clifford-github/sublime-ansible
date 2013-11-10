@@ -13,7 +13,7 @@ patterns:
     '2': {name: punctuation.definition.comment.line.ansible}
 
 - name: keyword.other.ansible
-  match: ^- (name\:) (.*)|(^(-|\s*)\ \w+\:)
+  match: ^- (name\:) (.*)|(^(-|\s*)\w+\:)
   captures:
     '2': {name: string.quoted.double.ansible}
 
@@ -27,8 +27,13 @@ patterns:
   match: (\{\{ *[^\{\}]+ *\}\})|(\$\{[^\{\}]+\})
 
 - name: text.ansible
-  match: (\w+)=([\w\.=\^]*((\{\{ *[^\{\}]+ *\}\})|(\$\{[^\{\}]+\}))*)
+  match: (\w+)=([\w\.=\^\/\~]*((\{\{ *[^\{\}]+ *\}\})|(\$\{[^\{\}]+\}))*)
   captures:
     '1': {name: entity.other.attribute-name.ansible}
     '2': {name: constant.other.ansible}
     '3': {name: storage.type.ansible}
+
+- name: string.quoted.double.ansible
+  match: ^(\[[0-9a-zA-Z_-]+(((\:)children)*)\])
+  captures:
+    '2': {name: variable.parameter.ansible}
