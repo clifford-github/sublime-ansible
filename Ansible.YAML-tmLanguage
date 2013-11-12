@@ -1,7 +1,7 @@
 # [PackageDev] target_format: plist, ext: tmLanguage
 ---
 name: Ansible
-scopeName: text.ansible
+scopeName: source.ansible
 fileTypes: []
 uuid: 787ae642-b4ae-48b1-94e9-f935bec43a8f
 
@@ -17,7 +17,7 @@ patterns:
   captures:
     '2': {name: string.quoted.double.ansible}
 
-- name: text.ansible
+- name: source.ansible
   match: (\w+)=(\{\{ *[0-9a-zA-Z_]+ *\}\})
   captures:
     '1': {name: entity.other.attribute-name.ansible}
@@ -26,7 +26,7 @@ patterns:
 - name: storage.type.ansible
   match: (\{\{ *[^\{\}]+ *\}\})|(\$\{[^\{\}]+\})
 
-- name: text.ansible
+- name: source.ansible
   match: (\w+)=([\w\.=\^\/\~]*((\{\{ *[^\{\}]+ *\}\})|(\$\{[^\{\}]+\}))*)
   captures:
     '1': {name: entity.other.attribute-name.ansible}

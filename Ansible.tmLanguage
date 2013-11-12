@@ -59,7 +59,7 @@
 			<key>match</key>
 			<string>(\w+)=(\{\{ *[0-9a-zA-Z_]+ *\}\})</string>
 			<key>name</key>
-			<string>text.ansible</string>
+			<string>source.ansible</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -89,7 +89,7 @@
 			<key>match</key>
 			<string>(\w+)=([\w\.=\^\/\~]*((\{\{ *[^\{\}]+ *\}\})|(\$\{[^\{\}]+\}))*)</string>
 			<key>name</key>
-			<string>text.ansible</string>
+			<string>source.ansible</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -107,7 +107,7 @@
 		</dict>
 	</array>
 	<key>scopeName</key>
-	<string>text.ansible</string>
+	<string>source.ansible</string>
 	<key>uuid</key>
 	<string>787ae642-b4ae-48b1-94e9-f935bec43a8f</string>
 </dict>
