@@ -1,6 +1,9 @@
 Syntax highlighting for Ansible files
 =====================================
 
+## Screenshot
+![Screenshot](https://github.com/clifford-github/sublime-ansible/blob/development/doc/images/syntax1.PNG)
+
 ## Installation
 Clone the repository in your Sublime Text "Packages" directory:
 
