@@ -2,8 +2,10 @@ Syntax highlighting for Ansible files
 =====================================
 
 ## Screenshot
+
 With color scheme Monokai
-![Screenshot](/doc/images/syntax1.PNG)
+
+![Screenshot](https://raw.github.com/clifford-github/sublime-ansible/master/doc/images/syntax1.PNG)
 
 ## Installation
 Clone the repository in your Sublime Text "Packages" directory:
