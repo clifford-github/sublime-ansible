@@ -1,0 +1,26 @@
+####################################
+# task.yml
+#
+# testfile for syntax highlighting
+####################################
+
+- include: ./clean_all.yml
+  when: clean_all
+
+###########################################
+# create necessary directories
+- name: create temp directory
+  action: file path={{ temp_dir }} state=directory
+- name: create releases directory
+  file: path={{ application_dir }} state=directory
+# end create necessary directories
+###########################################
+
+###########################################
+# checks before deployment can start
+- name: check if artifact exists
+  action: "shell curl -s --head '{{ artifact_download_url }}' | grep 'HTTP/1.[01] [23]..'"
+  tags:
+    - pre_checks
+# end of checks before deployment can start
+###########################################
