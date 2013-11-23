@@ -13,7 +13,7 @@ patterns:
     '2': {name: punctuation.definition.comment.line.ansible}
 
 - name: keyword.other.ansible
-  match: ^- (name\:) (.*)|(^(-|\s*)\w+\:)
+  match: ^- (name\:|include\:) (.*)|(^(-|\s*)\w+\:)
   captures:
     '2': {name: string.quoted.double.ansible}
 
