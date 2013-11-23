@@ -2,6 +2,7 @@ Syntax highlighting for Ansible files
 =====================================
 
 ## Screenshot
+With color scheme Monokai
 ![Screenshot](/doc/images/syntax1.PNG)
 
 ## Installation
