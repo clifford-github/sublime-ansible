@@ -29,10 +29,16 @@
 # copy nginx configuration
 - name: copy nginx conf
   copy: src=nginx.conf
-        dest=/etc/nginx/nginx.conf
+        dest=/etc/nginx/{{ nginx }}.conf
         owner=www-data
         group=www-data
         mode=0644
   notify: restart nginx
 # end of copy nginx configuration
+###########################################
+
+###########################################
+# host configuration in inventory file
+[foo-bar-dev]
+foo.dev.bar.com some_host_var=foo001.service.bar:7676,foo002.service.bar:7676
 ###########################################

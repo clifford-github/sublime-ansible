@@ -87,7 +87,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(\w+)=([\w\.=\^\/\~-]*((\{\{ *[^\{\}]+ *\}\})|(\$\{[^\{\}]+\}))*)</string>
+			<string>(\w+)=([\w\.=\^\/\~\:,-]*((\{\{ *[^\{\}]+ *\}\})|(\$\{[^\{\}]+\}))*[\w\.=\^\/\~\:,-]*)</string>
 			<key>name</key>
 			<string>source.ansible</string>
 		</dict>
