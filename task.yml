@@ -24,3 +24,15 @@
     - pre_checks
 # end of checks before deployment can start
 ###########################################
+
+###########################################
+# copy nginx configuration
+- name: copy nginx conf
+  copy: src=nginx.conf
+        dest=/etc/nginx/nginx.conf
+        owner=www-data
+        group=www-data
+        mode=0644
+  notify: restart nginx
+# end of copy nginx configuration
+###########################################

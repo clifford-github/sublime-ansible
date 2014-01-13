@@ -27,7 +27,7 @@ patterns:
   match: (\{\{ *[^\{\}]+ *\}\})|(\$\{[^\{\}]+\})
 
 - name: source.ansible
-  match: (\w+)=([\w\.=\^\/\~]*((\{\{ *[^\{\}]+ *\}\})|(\$\{[^\{\}]+\}))*)
+  match: (\w+)=([\w\.=\^\/\~-]*((\{\{ *[^\{\}]+ *\}\})|(\$\{[^\{\}]+\}))*)
   captures:
     '1': {name: entity.other.attribute-name.ansible}
     '2': {name: constant.other.ansible}
