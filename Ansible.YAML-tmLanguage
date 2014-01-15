@@ -12,26 +12,25 @@ patterns:
     '1': {name: comment.line.number-sign.ansible}
     '2': {name: punctuation.definition.comment.line.ansible}
 
+- name: storage.type.ansible
+  match: (\{\{ *[^\{\}]+ *\}\})|(\$\{[^\{\}]+\})
+
 - name: keyword.other.ansible
   match: ^- (name\:|include\:) (.*)|(^(-|\s*)\w+\:)
   captures:
     '2': {name: string.quoted.double.ansible}
 
-- name: source.ansible
-  match: (\w+)=(\{\{ *[0-9a-zA-Z_]+ *\}\})
-  captures:
+- name: variable.complex.ansible
+  contentName: string.other.ansible
+  begin: (\w+)(=)
+  beginCaptures:
     '1': {name: entity.other.attribute-name.ansible}
-    '2': {name: storage.type.ansible}
-
-- name: storage.type.ansible
-  match: (\{\{ *[^\{\}]+ *\}\})|(\$\{[^\{\}]+\})
-
-- name: source.ansible
-  match: (\w+)=([\w\.=\^\/\~\:,-]*((\{\{ *[^\{\}]+ *\}\})|(\$\{[^\{\}]+\}))*[\w\.=\^\/\~\:,-]*)
-  captures:
-    '1': {name: entity.other.attribute-name.ansible}
-    '2': {name: constant.other.ansible}
-    '3': {name: storage.type.ansible}
+    '2': {name: string}
+  end: \s
+  patterns:
+    - include: $self
+    - name: constant.other.ansible
+      match: .
 
 - name: string.quoted.double.ansible
   match: ^(\[[0-9a-zA-Z_-]+(((\:)children)*)\])
