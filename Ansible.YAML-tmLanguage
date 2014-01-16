@@ -6,6 +6,27 @@ fileTypes: []
 uuid: 787ae642-b4ae-48b1-94e9-f935bec43a8f
 
 patterns:
+- name: module.file.ansible
+  contentName: string.other.ansible
+  begin: "(file:)"
+  beginCaptures:
+    '1': {name: keyword.other.ansible}
+  end: ^\s*$|^\s*\}|^\s*\]|^\s*\)
+  patterns:
+    - include: $self
+    - name: string
+      match: .
+- name: module.copy.ansible
+  contentName: string.other.ansible
+  begin: "(copy:)"
+  beginCaptures:
+    '1': {name: keyword.other.ansible}
+  end: ^\s*$|^\s*\}|^\s*\]|^\s*\)
+  patterns:
+    - include: $self
+    - name: string
+      match: .
+
 - name: comment.line.number-sign.ansible
   match: (?:^ *|\G *)((#).*)
   captures:
@@ -36,3 +57,4 @@ patterns:
   match: ^(\[[0-9a-zA-Z_-]+(((\:)children)*)\])
   captures:
     '2': {name: variable.parameter.ansible}
+

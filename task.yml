@@ -45,3 +45,9 @@ foo.dev.bar.com some_host_var=foo001.service.bar:7676,foo002.service.bar:7676
 
 - name: install bundler
   command: /home/{{ discourse.user }}/.rvm/bin/gem install creates=/home/{{ discourse.user }}/.rvm/gems/ruby-{{ ruby.global}}/bin/bundle
+
+file: force=tets{{ sdjs }}jsdhkjas 
+      path=dsds
+
+
+copy: 

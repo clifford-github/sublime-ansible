@@ -1,0 +1,10 @@
+{
+        "scope": "module.copy.ansible",
+
+        "completions":
+        [
+            { "trigger": "backup\tyes|no", "contents": "backup=$0 " },
+            { "trigger": "content\tstring", "contents": "content=$1" },
+            { "trigger": "dest\tabsolute path", "contents": "dest=$1" }
+        ]
+}

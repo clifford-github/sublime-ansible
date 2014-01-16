@@ -1,0 +1,9 @@
+{
+        "scope": "source.ansible - module.file.ansible",
+
+        "completions":
+        [
+            { "trigger": "force", "contents": "force=$0 " }
+
+        ]
+}

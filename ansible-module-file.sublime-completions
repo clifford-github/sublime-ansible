@@ -1,0 +1,11 @@
+{
+        "scope": "module.file.ansible",
+
+        "completions":
+        [
+            { "trigger": "force\tyes|no", "contents": "force=$0 " },
+            { "trigger": "path\tpath", "contents": "path=$1" },
+            { "trigger": "state\tfile|link|directory|hard|touch|absent", "contents": "state=$1" }
+
+        ]
+}
