@@ -10,7 +10,7 @@
 ###########################################
 # create necessary directories
 - name: create temp directory
-  action: file path={{ temp_dir }} state=directory
+  action: file path="ss{{ temp_dir }}ss" state=directory
 - name: create releases directory
   file: path={{ application_dir }} state=directory
 # end create necessary directories

@@ -22,11 +22,11 @@ patterns:
 
 - name: variable.complex.ansible
   contentName: string.other.ansible
-  begin: (\w+)(=)
+  begin: (\w+)(=)\"?
   beginCaptures:
     '1': {name: entity.other.attribute-name.ansible}
-    '2': {name: string}
-  end: \s
+    '2': {name: text}
+  end: \"?\s
   patterns:
     - include: $self
     - name: constant.other.ansible
