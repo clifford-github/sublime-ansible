@@ -16,7 +16,7 @@ patterns:
   match: (\{\{ *[^\{\}]+ *\}\})|(\$\{[^\{\}]+\})
 
 - name: keyword.other.ansible
-  match: ^- (name\:|include\:) (.*)|(^(-|\s*)\w+\:)
+  match: \- (name\:|include\:) (.*)|(^(- |\s*)\w+\:)
   captures:
     '2': {name: string.quoted.double.ansible}
 

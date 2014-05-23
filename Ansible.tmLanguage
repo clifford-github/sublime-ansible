@@ -44,7 +44,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^- (name\:|include\:) (.*)|(^(-|\s*)\w+\:)</string>
+			<string>\- (name\:|include\:) (.*)|(^(- |\s*)\w+\:)</string>
 			<key>name</key>
 			<string>keyword.other.ansible</string>
 		</dict>
