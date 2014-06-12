@@ -5,7 +5,7 @@ Syntax highlighting for Ansible files
 
 With color scheme Monokai
 
-![Screenshot](https://raw.github.com/clifford-github/sublime-ansible/master/doc/images/syntax1.PNG)
+![Screenshot](/doc/images/syntax1.PNG)
 
 ## Installation
 Clone the repository in your Sublime Text "Packages" directory:
