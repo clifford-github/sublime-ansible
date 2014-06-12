@@ -44,13 +44,13 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^- (name\:|include\:) (.*)|(^(-|\s*)\w+\:)</string>
+			<string>\- (name\:|include\:) (.*)|(^(- |\s*)\w+\:)</string>
 			<key>name</key>
 			<string>keyword.other.ansible</string>
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\w+)(=)</string>
+			<string>(\w+)(=)\"?</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -61,13 +61,13 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>string</string>
+					<string>text</string>
 				</dict>
 			</dict>
 			<key>contentName</key>
 			<string>string.other.ansible</string>
 			<key>end</key>
-			<string>\s</string>
+			<string>\"?\s</string>
 			<key>name</key>
 			<string>variable.complex.ansible</string>
 			<key>patterns</key>

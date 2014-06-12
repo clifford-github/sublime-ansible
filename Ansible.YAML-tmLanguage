@@ -16,17 +16,17 @@ patterns:
   match: (\{\{ *[^\{\}]+ *\}\})|(\$\{[^\{\}]+\})
 
 - name: keyword.other.ansible
-  match: ^- (name\:|include\:) (.*)|(^(-|\s*)\w+\:)
+  match: \- (name\:|include\:) (.*)|(^(- |\s*)\w+\:)
   captures:
     '2': {name: string.quoted.double.ansible}
 
 - name: variable.complex.ansible
   contentName: string.other.ansible
-  begin: (\w+)(=)
+  begin: (\w+)(=)\"?
   beginCaptures:
     '1': {name: entity.other.attribute-name.ansible}
-    '2': {name: string}
-  end: \s
+    '2': {name: text}
+  end: \"?\s
   patterns:
     - include: $self
     - name: constant.other.ansible
