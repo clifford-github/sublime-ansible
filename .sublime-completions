@@ -1,0 +1,9 @@
+{
+  "scope": "text.yml - source.ansible - keyword.other.ansible",
+
+  "completions":
+  [
+    { "trigger": "name", "contents": "- name:" },
+    { "trigger": "template", "contents": "template:" },
+  ]
+}

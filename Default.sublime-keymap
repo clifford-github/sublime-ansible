@@ -1,0 +1,3 @@
+[
+  { "keys": ["ctrl+u"], "command": "open_doc" }
+]
