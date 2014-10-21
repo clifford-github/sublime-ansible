@@ -5,7 +5,7 @@ Syntax highlighting for Ansible files
 
 With color scheme Monokai
 
-![Screenshot](/doc/images/syntax1.PNG)
+![Screenshot](/doc/images/syntax1.PNG?raw=true)
 
 ## Installation
 
