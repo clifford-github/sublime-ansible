@@ -33,6 +33,6 @@ patterns:
       match: .
 
 - name: string.quoted.double.ansible
-  match: ^(\[[0-9a-zA-Z_-]+(((\:)children)*)\])
+  match: ^(\[[0-9a-zA-Z_-]+(((\:)children|vars)*)\])
   captures:
     '2': {name: variable.parameter.ansible}
