@@ -5,9 +5,11 @@ Syntax highlighting for Ansible files
 
 With color scheme Monokai
 
-![Screenshot](/doc/images/syntax1.PNG?raw=true)
+![Screenshot](/doc/images/ansible-syntax.png?raw=true)
 
 ## Installation
+
+I recommend install another package along with this one, "Apply Syntax" package since this syntax does not take ownership of yml nor yaml files.
 
 ### Package Manager
 

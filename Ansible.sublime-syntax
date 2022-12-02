@@ -1,0 +1,103 @@
+%YAML 1.2
+---
+name: Ansible
+file_extensions: [yml, yaml]
+scope: source.ansible
+
+variables:
+
+  results: "(failed|succeeded|skipped)"
+  functions: "(d(efault)?|query|lookup|combine|dict2items|product|list|query)"
+
+contexts:
+
+  main:
+
+    - match: ""
+      push: Packages/YAML/YAML.sublime-syntax
+      with_prototype:
+
+      - match: ansible_((\.)?[\w])*
+        set: constant_ansible
+
+      - match: '\b{{results}}\b'
+        set: constant_ansible
+
+      - match: "{({)?"
+        set: jinja
+
+      - match: \b(is|or|(or )?not|if|else|(((un)?defined)))\b
+        set: keywords_control
+
+      - match: (\||==|!=)
+        set: keywords_control
+
+      - match: '"'
+        set: string
+
+      - match: "'"
+        set: string
+
+      - match: "(- name:)"
+        set: name_identifiers
+
+
+  name_identifiers:
+    - clear_scopes: 1
+    - meta_scope: entity.name.ansible
+
+    - match: "{({)?"
+      push: jinja
+
+    - match: \n
+      pop: true
+
+  keywords_control:
+    - meta_scope: keyword.control.ansible
+
+    - match: \s
+      pop: true
+
+  constant_ansible:
+    - meta_scope: constant.other.ansible
+    - match: \s
+      pop: true
+
+  jinja:
+    - clear_scopes: 1
+    - meta_scope: punctuation.section.block.begin.ansible
+
+    - match: '"'
+      push: string
+
+    - match: "'"
+      push: string
+
+    - match: (\||==|!=)
+      push: keywords_control
+
+    - match: "(})?}"
+      pop: true
+
+    - match: ansible_((\.)?[\w])*
+      push: constant_ansible
+
+    - match: '\b{{functions}}\b'
+      scope: support.function.ansible
+
+    - match: \w
+      scope: storage.type.ansible
+
+  string:
+    - meta_scope: string.quoted.other.ansible
+
+    - match: \\.
+      scope: constant.character.escape.ansible
+
+    - match: "{({)?"
+      push: jinja
+
+    - match: '"'
+      pop: true
+    - match: "'"
+      pop: true
