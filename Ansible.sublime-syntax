@@ -7,25 +7,50 @@ version: 2
 variables:
 
   results: "(failed|succeeded|skipped)"
-  functions: "(d(efault)?|query|lookup|combine|dict2items|product|list|query)"
+  operatos: |-
+    (?x:
+      \b(?:
+          (is|or)(\snot)?|if|else|(un)?defined
+      )\b
+    )
+  builtin_functions: |-
+    (?x:
+      \b(?:
+          d(efault)?|query|lookup
+          |combine|selectattr|dict2items
+          |product|list|query
+      )\b
+    )
+
+  builtin_tags: |-
+    (?x:
+      \b(?:
+          block|recursive|macro
+          |call|filter|set|extends|include|raw|debug|with
+          |autoescape|trans|pluralize|scoped|as|do
+      )\b
+    )
 
 contexts:
 
   main:
-    - match: ''
+    - match: ""
       push: Packages/YAML/YAML.sublime-syntax
       with_prototype:
-        - include: entity-ansible
-        - include: constant-ansible
-        - include: jinja
-        - include: keyword-control
         - include: comments
+        - include: entity-ansible
+        - include: jinja
+        # - include: when-control
 
   comments:
-    - match: '#.+$'
-      scope: comment.line.ansible
-      push:
-        - include: main
+    - match: \#
+      scope: punctuation.definition.comment.ansible
+      push: comment_line
+
+  comment_line:
+    - meta_scope: comment.line.ansible
+    - match: $\n?
+      set: main
 
   entity-ansible:
     - match: '- name:.*$'
@@ -41,46 +66,93 @@ contexts:
     - match: 'ansible_((?:\.)?\w+(\[\w\]+)?)+'
       scope: constant.other.ansible
 
+  when-control:
+    - match: '(?:(when)(:))'
+      captures:
+        1: entity.name.tag.ansible
+        2: punctuation.separator.ansible
+    - include: when-body
+
+  when-body:
+    - match: '^\s*-\s.*$'
+      set: keyword-control
+
   keyword-control:
-    - match: \b(is|or|(or )?not|if|else|(((un)?defined)))\b
-      scope: keyword.control.ansible
-      apply_prototype: true
+    - match: '\s{{operatos}}\s'
+      scope: keyword.operator.word.ansible
 
   jinja:
-    - match: '{{'
-      scope: punctuation.section.block.begin.ansible
-      push:
-        - include: jinja-storage
-        - include: string
-        - include: numeric
-        - include: jinja-keyword-control
-        - include: jinja-end
+    - match: \{{2}
+      scope: punctuation.definition.placeholder.begin.ansible
+      push: jinja-body
 
-  jinja-storage:
+  jinja-body:
+    - meta_scope: meta.placeholder.ansible
+    - match: \}{2}
+      scope: punctuation.definition.placeholder.end.ansible
+      pop: true
+    - include: jinja-expressions
+
+  jinja-expressions:
+    - include: match_keywords
     - include: constant-ansible
-    - match: \b\w*[a-zA-Z]+\w+\b
-      scope: storage.type.ansible
+    - include: single-functions
+    - include: functions
+
+  match_keywords:
+    - match: \b(for)\b
+      scope: keyword.control.loop.for.ansible
+    - match: \b(if)\b
+      scope: keyword.control.conditional.if.ansible
+    - match: \b(else)\b
+      scope: keyword.control.conditional.else.ansible
+    - match: \b(elif)\b
+      scope: keyword.control.conditional.elseif.ansible
+    - match: \b(continue)\b
+      scope: keyword.control.flow.continue.ansible
+    - match: \b(break)\b
+      scope: keyword.control.flow.break.ansible
+    - match: '{{builtin_tags}}'
+      scope: keyword.other.tag.ansible
+    - match: (\||==|!=)
+      scope: keyword.other.tag.ansible
+
+  single-functions:
+    - match: (\s{{builtin_functions}}\s)
+      scope: support.function.global.ansible
+
+  functions:
+    - match: (?:({{builtin_functions}})|(\w+))(\()
+      captures:
+        1: support.function.global.ansible
+        2: variable.function.ansible
+        3: punctuation.section.arguments.begin.ansible
+      push:
+        - meta_content_scope: meta.function-call.arguments.ansible
+        - match: \)
+          scope: punctuation.section.arguments.end.ansible
+          pop: true
+        - match: '[a-zA-Z0-9_]+'
+          scope: variable.parameter.ansible
+        - match: \,
+          scope: punctuation.separator.parameters.twig
 
   jinja-keyword-control:
     - match: (\||==|!=)
       scope: keyword.control.ansible
+      pop: true
 
   jinja-end:
     - match: '}}'
       scope: punctuation.section.block.end.ansible
       pop: true
-
-  numeric:
-    - match: \d+
-      scope: constant.numeric.integer.ansible
+      set:
+        - include: main
 
   string:
-    - match: \\'
-      scope: string.quoted.other.ansible
-    - match: \\"
-      scope: string.quoted.other.ansible
+    - meta_scope: string.quoted.other.ansible
+    - match: \'| \"
+      scope: punctuation.definition.string.begin.ansible
+      pop: true
     - match: \\.
       scope: constant.character.escape.ansible
-    - match: \b"|'\b
-      scope: string.quoted.other.ansible
-      pop: true
