@@ -10,12 +10,10 @@ variables:
   functions: "(d(efault)?|query|lookup|combine|dict2items|product|list|query)"
 
 contexts:
-  prototype:
-    - include: comments
 
   main:
     - match: ''
-      push: scope:source.yaml
+      push: Packages/YAML/YAML.sublime-syntax
       with_prototype:
         - include: entity-ansible
         - include: constant-ansible
@@ -25,8 +23,9 @@ contexts:
 
   comments:
     - match: '#.+$'
-      scope: comment.block.ansible
-      pop: true
+      scope: comment.line.ansible
+      push:
+        - include: main
 
   entity-ansible:
     - match: '- name:.*$'
