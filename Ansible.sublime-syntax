@@ -39,6 +39,7 @@ contexts:
       with_prototype:
         - include: comments
         - include: entity-ansible
+        - include: constant-ansible
         - include: jinja
         # - include: when-control
 
