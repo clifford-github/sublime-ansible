@@ -37,7 +37,7 @@ contexts:
     - match: ""
       push: Packages/YAML/YAML.sublime-syntax
       with_prototype:
-        - include: comments
+        # - include: comments
         - include: entity-ansible
         - include: constant-ansible
         - include: jinja
@@ -54,7 +54,7 @@ contexts:
       set: main
 
   entity-ansible:
-    - match: '- name:.*$'
+    - match: '^\s*- name:.*$'
       scope: entity.name.ansible
       pop: true
 
